@@ -1,0 +1,46 @@
+<% if current_user.admin? && !@sellers.empty?%>
+  <div class="">
+    
+    <h1 class="ls-title-intro ls-ico-trophy">Relação de vendedores</h1>
+    
+    <div class="ls-list" id="0">
+      <header class="ls-list-header">
+        <div class="ls-list-title col-md-9">
+          <% @sellers.each do |seller| %>
+            <li>
+              <%= link_to seller.name, commissions_seller_path(seller)%><br><br>
+            </li>
+          <% end %>
+        </div>
+      </header>
+    </div>
+  </div>
+<% end %>
+
+
+<br>
+<h3 class="ls-title">Comissões</h3>
+<% if @commissions.any? %>
+  <table class='ls-table ls-table-striped ls-bg-header'>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Vendedor</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Data de geração</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @commissions.each do |com| %>
+        <tr id="<%= "id#{com.id}" %>">
+          <td scope="row"><%= com.id %></td>
+          <td scope="row"><%= User.find(com.user_id).name %></td>
+          <td scope="row"><%= number_to_currency(com.value) %></td>
+          <td scope="row"><%= "Gerada em #{com.created_at}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3 class="ls-alert-warning">Nenhuma comissão encontrada</h3>
+<% end %>

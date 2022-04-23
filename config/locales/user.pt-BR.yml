@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+    attributes:
+      user:
+        name: "Nome"
+        role:
+          salesperson: "Vendedor" 
+          admin: "Administrador"
+        status:
+          inactive: "Inativo"
+          active: "Ativo"

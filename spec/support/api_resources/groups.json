@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Email",
+    "key": "EMAIL",
+    "description": "Serviços de Email",
+    "icon": "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--60c0f2f6c8893d33cbf0efb3fc6c0a211fbbfcd3/email.png"
+  },
+  {
+    "id": 2,
+    "name": "Hospedagem",
+    "key": "HSPDG",
+    "description": "Serviços de hospedagem",
+    "icon": "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03399bd8ad702233a61d3a60ec77bfa2f43a7ff4/cloud.png"
+  },
+  {
+    "id": 3,
+    "name": "Cloud",
+    "key": "CLOUD",
+    "description": "Serviços de cloud",
+    "icon": "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed55bae70d97c1b8a281ec637cd5bfc700236bfe/cloud.png"
+  }
+]

@@ -1,0 +1,93 @@
+<h1 class="ls-title-intro ls-ico-home">Sistema de Vendas</h1>
+
+<div class= "ls-box">
+
+  <p>
+    <% if @api_clientes %>
+      <span class="ls-ico-earth api_success"></span>
+    <% else %>
+      <span class="ls-ico-earth api_error"></span>
+    <% end %>
+    API de Painel de Clientes
+  </p>
+  <p>
+    <% if @api_pagamentos %>
+      <span class="ls-ico-earth api_success"></span>
+    <% else %>
+      <span class="ls-ico-earth api_error"></span>
+    <% end %>
+    API de Gateway de Pagamento
+  </p>
+  <p>
+    <% if @api_produtos %>
+      <span class="ls-ico-earth api_success"></span>
+    <% else %>
+      <span class="ls-ico-earth api_error"></span>
+    <% end %>
+    API de Gestão de Produtos
+  </p>
+</div>
+
+<div class="ls-box ls-board-box">
+  <header class="ls-info-header">
+    <h2 class="ls-title-3">Insights</h2>
+  </header>
+
+  <div id="sending-stats" class="row">
+    <div class="col-sm-6 col-md-3">
+      <div class="ls-box">
+        <div class="ls-box-head">
+          <h6 class="ls-title-4">Clientes</h6>
+        </div>
+        <div class="ls-box-body">
+          <span class="ls-board-data">
+            <strong><%= @client_qty %></strong>
+          </span>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="ls-box">
+        <div class="ls-box-head">
+          <h6 class="ls-title-4">Pedidos</h6>
+        </div>
+        <div class="ls-box-body">
+          <span class="ls-board-data">
+            <strong><%= @order_qty %></strong>
+          </span>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="ls-box">
+        <div class="ls-box-head">
+          <h6 class="ls-title-4">Usuários</h6>
+        </div>
+        <div class="ls-box-body">
+          <span class="ls-board-data">
+            <strong><%= @user_qty %></strong>
+          </span>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="ls-box">
+        <div class="ls-box-head">
+          <h6 class="ls-title-4">Comissões</h6>
+        </div>
+        <div class="ls-box-body">
+          <span class="ls-board-data">
+            <strong><%= @commission_qty %></strong>
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

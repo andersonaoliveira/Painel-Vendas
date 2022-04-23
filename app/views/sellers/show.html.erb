@@ -1,0 +1,27 @@
+<h1 class="ls-title-intro ls-ico-user">Dados do vendedor <%= @seller.name %></h1>
+
+
+<div class="ls-box">
+  <h2 class="ls-title-name"><%= @seller.name %></h2>
+  <div>
+    
+      <div class="ls-label col-md-6 col-lg-8">
+        <h4 class="ls-label-text">E-mail</h4><br>
+        <div class="ls-form-text"><%= @seller.email %></div>
+      </div>
+
+      <div class="ls-label col-md-6 col-lg-8">
+        <h4 class="ls-label-text">Status:</h4>   <br>     
+        <div class="ls-form-text"><%= User.human_enum_name(:status, @seller.status) %></div>         
+      </div>
+      <p> 
+        <% if @seller.active? %>
+          <%= button_to 'Desativar vendedor', change_status_seller_path, {method: 'patch',  class: "ls-btn ls-btn-sm"}   %>
+        <% else %>
+          <%= button_to 'Ativar vendedor', change_status_seller_path, {method: 'patch',  class: "ls-btn ls-btn-sm"}   %>
+        <% end %>
+      </p>
+  </div>
+</div>
+
+<%= button_to 'Voltar', sellers_path, method: :get, class: "ls-btn ls-btn-sm" %>

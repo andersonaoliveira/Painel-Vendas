@@ -1,0 +1,32 @@
+<h1 class="ls-title-intro ls-ico-user">Bloqueio de cliente</h1>
+<div class= "ls-box"> 
+  <h2 class="ls-title-name"><%= @client.name %></h2>
+
+  <div>
+    <div class="ls-label col-md-6 col-lg-8">
+      <h4>CPF:</h4>
+      <div class="ls-form-text"><%= @client.eni %></div>
+    </div>
+
+    
+
+    <div class="ls-label col-md-6 col-lg-8">
+      <h4>Email</h4>
+      <div class="ls-form-text"><%= @client.email %></div>
+    </div>
+
+    
+  </div>
+</div>
+<h3 class="ls-alert-warning">Tem certeza que deseja Bloquear este cliente?</h3>
+
+<div class= "ls-box-filter">
+  <%= form_with url: "/clients/#{@client.id}/deactivate_cpf", method: :patch, html: {class: 'ls-form'} do |form| %>
+    <%= form.label :cancellation_reason, 'Motivo:' %>
+    <%= form.text_area :cancellation_reason %>
+    <%= form.submit 'Confirmar', class: "ls-btn-primary-danger" %>
+  <% end %>
+</div>
+<%= button_to 'Voltar', client_path(@client.id), method: :get, class: "ls-btn ls-btn-sm" %>
+
+ 

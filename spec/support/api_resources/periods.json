@@ -1,0 +1,20 @@
+[
+  {
+    "id": 2,
+    "plan": "Email Básica",
+    "value": "105.0",
+    "period": "Mensal"
+  },
+  {
+    "id": 3,
+    "plan": "Email Básica",
+    "value": "300.0",
+    "period": "Semestral"
+  },
+  {
+    "id": 4,
+    "plan": "Email Básica",
+    "value": "450.0",
+    "period": "Anual"
+  }
+]

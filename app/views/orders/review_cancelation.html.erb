@@ -1,0 +1,35 @@
+<h1 class="ls-title-intro ls-ico-edit-admin">Confirmar cancelamento de pedido</h1>
+
+
+<div class= "ls-box box">
+  <div>
+    
+    <div class="ls-title-3">Cliente</div><br>
+    <div class="ls-label-text "><%= @client.name %></div><br>
+    <div class="ls-form-text"><%= @client.eni %></div><br>
+   
+    <div class="ls-title-3">Plano</div><br>
+    <div class="ls-label-text "><%= @plan.name %></div><br>
+
+
+    <div class="ls-title-3">Periodicidade</div><br>
+    <div class="ls-label-text "><%= @period %></div><br>
+
+
+    <div class="ls-title-3">Valor</div><br>
+    <div class="ls-label-text "><%= number_to_currency(@price) %></div><br>
+
+  </div>
+</div>
+
+<h3 class="ls-alert-warning">Tem certeza que deseja cancelar esse pedido?</h3>
+
+<div class= "ls-box-filter">
+  <%= form_with url: "/orders/#{@order.id}/cancel_order", method: :patch, html: {class: 'ls-form'} do |form| %>
+    <%= form.label :cancelation_reason, 'Motivo:' %>
+    <%= form.text_area :cancelation_reason %>
+    <%= form.submit 'Cancelar', class: "ls-btn-primary-danger" %>
+  <% end %>
+</div>
+
+<%= button_to 'Voltar', orders_path, method: :get, class: "ls-btn ls-btn-sm" %>

@@ -1,0 +1,40 @@
+<%= render partial: "partial/model_errors" , locals:{ model: @seller } %>
+<h1 class="ls-title-intro ls-ico-user-add">Cadastro de vendedor</h1>
+
+<div class= "ls-box"> 
+  <%= form_with url: "/sellers" , html: {class: 'ls-form'} do |form| %>
+    <fieldset>
+      <%= form.label :name, 'Nome', class: 'ls-label ls-labels' %>
+      <%= form.text_field :name, class:'col-md-5' %>
+    </fieldset>
+
+    <fieldset>
+      <%= form.label :email, 'E-mail', class: 'ls-label ls-labels' %>
+      <%= form.email_field :email, class:'col-md-5' %>
+    </fieldset>
+
+    <fieldset>
+      <%= form.label :password, 'Senha', class: 'ls-label ls-labels' %>
+      <%= form.password_field :password, class:'col-md-5' %>
+    </fieldset>
+
+    <fieldset>
+      <%= form.label :password_confirmation, 'Confirme sua senha', class: 'ls-label ls-labels' %>
+      <%= form.password_field :password_confirmation, class:'col-md-5' %>
+    </fieldset>
+
+    <fieldset class='radio'> 
+      <%= radio_button_tag(:status, "active", class: "radio") %>
+      <%= label_tag(:status, "Ativo") %>
+      <br>
+      <%= radio_button_tag(:status, "inactive", class: "radio") %>
+      <%= label_tag(:status, "Inativo") %>
+    </fieldset>
+
+    <fieldset>
+      <%= form.submit 'Cadastrar', class: 'ls-btn' %>
+    </fieldset>
+  <% end %>
+
+</div>
+<%= button_to 'Voltar', sellers_path, method: :get, class: "ls-btn ls-btn-sm" %>

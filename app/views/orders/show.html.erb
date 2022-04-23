@@ -1,0 +1,33 @@
+<h1 class="ls-title-intro ls-ico-edit-admin">Pedido</h1>
+
+
+<div class= "ls-box box">
+  <div>
+    
+    <div class="ls-title-3">Cliente</div><br>
+    <div class="ls-label-text "><%= @client.name %></div><br>
+    <div class="ls-form-text"><%= @client.eni %></div><br>
+   
+    <div class="ls-title-3">Plano</div><br>
+    <div class="ls-label-text "><%= @plan.name %></div><br>
+
+
+    <div class="ls-title-3">Periodicidade</div><br>
+    <div class="ls-label-text "><%= @period %></div><br>
+
+
+    <div class="ls-title-3">Valor</div><br>
+    <div class="ls-label-text "><%= number_to_currency(@price) %></div><br>
+
+    <div class="ls-title-3">Desconto</div><br>
+    <div class="ls-label-text "><%= number_to_currency(@order.discount) %></div><br>
+
+    <div class="ls-title-3">Status do pedido</div><br>
+    <div class="ls-label-text "><%= Order.human_enum_name(:status, @order.status) %></div><br>
+
+  </div>
+</div>
+
+<%= button_to 'Voltar', orders_path, method: :get, class: "ls-btn ls-btn-sm" %>
+<br>
+<%= link_to 'Cancelar pedido', review_cancelation_order_path, method: :get, class: "ls-btn-primary-danger ls-ico-remove" %>

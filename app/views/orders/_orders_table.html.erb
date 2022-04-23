@@ -1,0 +1,26 @@
+<div>
+  <% if @orders.empty? %>
+    <h2 class="ls-alert-warning">Nenhum pedido</h2>
+  <% else %>  
+    <table class="ls-table ls-table-striped ls-bg-header">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Vendedor</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr id="order-<%= order.id %>">
+            <td scope="row"><%= link_to order.id, order_path(order.id), class: 'ls-btn ls-btn-primary ls-btn-sm', style: 'width: 50px' %></td>
+            <td scope="row"><%= order.user.nil? ? '(sem vendedor)' : order.user.name  %></td>
+            <td scope="row"><%= order.client.name %></td>
+            <td scope="row"><%= Order.human_enum_name(:status, order.status) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

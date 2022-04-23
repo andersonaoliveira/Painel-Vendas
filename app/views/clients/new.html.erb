@@ -1,0 +1,23 @@
+<h1 class="ls-title-intro ls-ico-user-add">Novo Cliente</h1>
+<%= render partial: "partial/model_errors" , locals:{ model: @client } %>
+
+<div class= "ls-box"> 
+  <%= form_with model: @client, html: {class: 'ls-form'} do |form| %>
+    <fieldset>
+      <%= form.label :eni, class: 'ls-label ls-labels' %>
+      <%= form.text_field :eni, class:'col-md-5', placeholder: 'Somente números'%>
+    </fieldset>
+    <fieldset>
+      <%= form.label :name, class: 'ls-label ls-labels' %>
+      <%= form.text_field :name, class:'col-md-5' %>
+    </fieldset>
+    <fieldset>
+      <%= form.label :email, class: 'ls-label ls-labels' %>
+      <%= form.text_field :email, class:'col-md-5' %>
+    </fieldset>
+    <fieldset class='btn-submit'>
+      <%= form.submit 'Cadastrar', class: 'ls-btn' %>
+    </fieldset>
+  <% end %>
+</div>
+<%= button_to 'Voltar', clients_path, method: :get, class: "ls-btn ls-btn-sm" %>

@@ -1,0 +1,19 @@
+<h1 class="ls-title-intro ls-ico-edit-admin">Pedidos</h1>
+
+<div class= "ls-box-filter">
+  <%= form_with url: search_orders_path, 
+                method: :get, 
+                html: {class: 'ls-form ls-form-inline'} do |f| %>
+    <fieldset class='search'>
+      <%= f.text_field :query, id: 'search', placeholder: 'Vendedor ou cliente' %>
+      <%= f.submit 'Buscar', class: 'ls-btn-primary' %>
+    </fieldset>
+  <% end %>
+</div>
+
+<%= button_to 'Pedidos cancelados', canceled_orders_path, method: :get, class: "ls-btn ls-btn-sm"  %>
+<%# button_to 'Voltar', client_path(@client.id), method: :get, class: "ls-btn ls-btn-sm" %>
+
+<%= render partial: 'orders_table', locals: { orders: @orders } %>
+
+

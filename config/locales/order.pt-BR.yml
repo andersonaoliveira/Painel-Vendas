@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    models:
+      order: Pedido
+    attributes:
+      order:
+        status: "Estado"
+        plan_id: "Plano"
+        period: "Periodicidade"
+        cupom_id: "Cupom"
+        cancelation_reason: "Motivo do cancelamento"
+        client_id: "Cliente"
+        user_id: "Vendedor"
+        value: "Preço"
+        client_eni: "CPF/CNPJ"
+        status:
+          pending: "Pendente"
+          concluded: "Confirmado"
+          canceled: "Cancelado"
+          
+

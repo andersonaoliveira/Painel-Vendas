@@ -1,0 +1,40 @@
+<h1 class="ls-title-intro ls-ico-user">Cadastro de novo pedido</h1>
+<%= link_to 'Cadastrar novo cliente', new_client_path, class: "ls-btn ls-btn-sm" %><br><br>
+
+<div class= "ls-box box">
+  <% if @prices.nil? %>
+    <h2 class="ls-alert-warning">Houve um erro de conexão com o servidor</h2>
+  <% elsif @prices.empty? %>
+    <h2 class="ls-alert-warning">Nenhuma periodicidade cadastrada para este plano</h2>
+  <% else %>
+    <h3 class="ls-title-5"><%= @client.name %></h3>
+    <h4 class="ls-title "><%= @plan.name %></h4>
+  
+    <%= form_with model: [@order, @client],
+                  url: client_orders_path(@client.id),
+                  method: :post,
+                  html: { class: 'ls-form ' } do |form|%>
+      <%= form.hidden_field :client_id, value: @client_id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.hidden_field :plan_id, value: @plan.id %>
+      <fieldset>
+        <% @prices.each do |price| %>
+          <div id='<%= price.period %>', style='margin: 15px 0 20px 15px' %>
+            <%= price.period %><br>
+            <%= number_to_currency(price.value) %>
+          </div>
+        <% end %>
+      </fieldset>
+      <fieldset style='margin: 15px 0 20px 0'>
+      <%= form.label :period, 'Periodicidade', class: 'ls-label-text' %><br>
+      <div class="dropdown">
+        <%= form.collection_select :period, @prices, :period, :period %>
+      </div>
+      </fieldset>
+      <fieldset>
+        <%= form.submit 'Confirmar',class: "ls-btn-primary" %>
+      </fieldset>
+    <% end %>
+  <% end %>
+</div>
+<%= link_to 'Voltar', :back, class: 'ls-btn ls-btn-sm', style: 'margin-top: -15px' %>

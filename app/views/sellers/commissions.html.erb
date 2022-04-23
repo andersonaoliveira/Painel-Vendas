@@ -1,0 +1,34 @@
+<h1 class="ls-title-intro ls-ico-trophy">Comissões</h1>
+
+
+<div class="ls-box">
+<h3 class="ls-title-3">Vendedor: <%= @seller.name %></h3>
+<br>
+<h3>Comissões</h3><br>
+
+<% if @commissions.any? %>
+  <table class="ls-table ls-table-striped ls-bg-header">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome do vendedor</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Data de geração</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @commissions.each do |com| %>
+        <tr id="<%= "id#{com.id}" %>">
+          <td scope="row"><%= com.id %></td>
+          <td scope="row"><%= User.find(com.user_id).name %></td>
+          <td scope="row"><%= number_to_currency(com.value) %></td>
+          <td scope="row"><%= "Gerada em #{com.created_at}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3 class="ls-alert-warning">Nenhuma comissão encontrada</h3>
+<% end %>
+
+</div>

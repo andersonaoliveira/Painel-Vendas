@@ -1,0 +1,9 @@
+<% if model.errors.any? %>
+
+  <span class="ls-label"> Verifique os campos abaixo: </span>
+  <div class="ls-alert-warning">
+    <% model.errors.full_messages.each do |msg| %>
+      <p> <%= msg %> </p>
+    <% end %>
+  </div>
+<% end %>

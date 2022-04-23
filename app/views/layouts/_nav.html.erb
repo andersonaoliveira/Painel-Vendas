@@ -1,0 +1,44 @@
+<div class="ls-topbar">    
+      
+  <div class="ls-notification-topbar">
+    <% if user_signed_in? %>
+      <div class="ls-alerts-list">
+        <a href="#" class="ls-ico-bell-o" data-ls-module="topbarCurtain" data-target="#ls-notification-curtain"><span>Notificações</span></a>
+        <a href="#" class="ls-ico-bullhorn" data-ls-module="topbarCurtain" data-target="#ls-help-curtain"><span>Ajuda</span></a>
+        <a href="#" class="ls-ico-question" data-ls-module="topbarCurtain" data-target="#ls-feedback-curtain"><span>Sugestões</span></a>
+      </div>
+     
+      <!--<div class="localogo">
+        <%#= image_tag 'locaweb_logo.svg' %>
+      </div> -->
+     
+    <div data-ls-module="dropdown" class="ls-dropdown ls-user-account">
+    
+      <a href="#" class="ls-ico-user">        
+        <span class="ls-name">Olá, <%= current_user.name.split.first %></span>        
+      </a>
+
+      <nav class="ls-dropdown-nav ls-user-menu">
+        <ul>
+          <li><%= link_to 'Meus Dados', edit_user_registration_path %> </li>
+          <li><%= link_to 'Sair', destroy_user_session_path,
+                            method: :delete,                            
+                            data: { confirm: 'Tem certeza de que deseja sair?' }%></li>
+                            
+        </ul>
+
+        <% else %>        
+        <%= link_to 'Entrar', new_user_session_path unless current_page?(controller: 'sessions', action: 'new') %>
+        <% end %>
+      </nav>
+    </div>
+  </div>
+ <span class="ls-show-sidebar ls-ico-menu"> </span>
+  <h1 class="ls-brand-name">
+    <a href="/" class="ls-ico-earth">
+      <small>Campus Code</small>
+      Vendas
+    </a>
+  </h1>   
+
+</div>

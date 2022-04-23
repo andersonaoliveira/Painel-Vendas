@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      client: Cliente
+    attributes:
+      client:
+        eni: "CPF/CNPJ"
+        name: "Nome"
+        email: "Email"

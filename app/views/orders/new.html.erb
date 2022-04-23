@@ -1,0 +1,60 @@
+<div id="orderError" class="alert ls-alert-danger"></div>
+<h1 class="ls-title-intro ls-ico-edit-admin">Cadastro de novo pedido</h1>
+
+<%= link_to 'Cadastrar novo cliente', new_client_path,  class: "ls-btn ls-btn-sm" %><br><br>
+
+<%= javascript_pack_tag "handleOrders" %>
+
+<% if @api_produtos %>
+  <% if @client.active? %>
+
+    <div class="ls-box box">
+      <form id="orderForm" class="ls-form " >
+        <input type="hidden" name="client_id" value="<%= @client.id %>">
+        <input type="hidden" name="client_name" value="<%= @client.name %>">
+        <input type="hidden" name="client_eni" value="<%= @client.eni %>">
+        <input type="hidden" name="user_id" value="<%= current_user.id %>">
+        <input type="hidden" name="user_name" value="<%= current_user.name %>">
+        <input type="hidden" name="domain_products" value="<%= Rails.configuration.apis['products_api'] %>">
+        <input type="hidden" name="domain_payments" value="<%= Rails.configuration.apis['payments_api'] %>">
+        <label for="group" class="ls-label-text">Grupo</label>
+        <select name="group" id="group" class="dropdown">
+        </select>
+        <br><br>
+        <label for="plan" class="ls-label-text">Plano</label>
+        <select name="plan" id="plan" class="dropdown">
+        </select>
+        <br><br>
+        <label for="period" class="ls-label-text">Periodicidade</label>
+        <select name="period" id="period" class="dropdown">
+        </select>
+        <br><br>
+        <label for="cupom_code">Cupom</label>
+        <input type="text" name="cupom_code" id="cupom_code" disabled>
+        <button id="submitCupom" class="ls-btn-primary" disabled>Validar cupom</button>
+      </form>
+    </div>
+    <br><br>
+    <div class="ls-box box" >
+      <h3>Resumo do pedido:</h3>
+      <br><br>
+      <h4>Cliente:</h4> <span id="show_client"></span>
+      <br><br>
+      <h4>Vendedor:</h4> <span id="show_user"></span>
+      <br><br>
+      <h4>Valor:</h4> R$ <span id="show_price">0,00</span>
+      <br><br>
+      <h4>Desconto de cupom:</h4> R$ <span id="show_discount">0,00</span>
+      <br><br>
+    </div>
+    <button id="submit" class="ls-btn-primary" >Salvar</button><br><br>
+    <%= button_to 'Voltar', orders_path, method: :get, class: "ls-btn ls-btn-sm" %>
+  <% else %>
+    <h2 class="ls-alert-warning">Este cliente está bloqueado</h2>
+  <% end %>
+
+<% else %>
+  <h2 class="ls-alert-warning">Houve um erro de conexão com o servidor (erro de conexão com API)</h2>
+<% end %>
+
+

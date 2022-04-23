@@ -1,0 +1,66 @@
+<h1 class="ls-title-intro ls-ico-users">Clientes</h1>
+
+<div >
+  <%= link_to 'Cadastrar novo cliente', new_client_path, class: "ls-btn ls-btn-sm" %>
+</div>
+
+<div class= "ls-box-filter">
+  <%= form_with url: search_clients_path, method: :get, html: {class: 'ls-form'} do %>
+    <%= label_tag :query, 'CPF do cliente', class: 'ls-label col-md-2' %><br>
+    <%= text_field_tag :query %>
+    <%= submit_tag 'Buscar', class: 'ls-btn-primary' %>
+  <% end %>
+</div>
+
+<% if @clients.empty? &&  @inactive_clients.empty?%>
+  <h2 class="ls-alert-warning">Nenhum cliente cadastrado</h2>
+<% else %>
+
+  <% unless @clients.empty?  %>
+    <table id = "active-clients" class="ls-table ls-table-striped ls-bg-header">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">E-mail</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+          <tr id="client-<%= client.id %>">
+            <td scope="row"><%= link_to client.name, client_path(client.id), class: "index-link" %></td>
+            <td scope="row"><%= client.email %></td>
+            <td scope="row"><%= link_to 'Fazer pedido', new_client_order_path(client.id), class: "ls-btn ls-btn-sm" %></td>          
+            <td scope="row"><%= link_to 'Ver detalhes', client_path(client.id), class: "ls-btn ls-btn-sm"  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <% unless @inactive_clients.empty?  %>
+    <table id = "inactive-clients" class="ls-table ls-table-striped ls-bg-header">
+      <thead id="ls-bg-header-inactive">
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">E-mail</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @inactive_clients.each do |client| %>
+          <tr id="client-<%= client.id %>">
+            <td scope="row"><%= link_to client.name, client_path(client.id), class: "index-link" %></td>
+            <td scope="row"><%= client.email %></td>
+            <td scope="row">Cliente Bloqueado</td>          
+            <td scope="row"><%= link_to 'Ver detalhes', client_path(client.id), class: "ls-btn ls-btn-sm"  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+ 
+
+<% end %>

@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "Email Básica",
+    "details": "Até 3 contas",
+    "product_group": {
+      "name": "Email",
+      "key": "EMAIL"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Email Premium",
+    "details": "Até 10 contas",
+    "product_group": {
+      "name": "Email",
+      "key": "EMAIL"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Hospedagem Básica",
+    "details": "1 Site 250 GB de Armazenamento SSD 1 Conta de Email",
+    "product_group": {
+      "name": "Hospedagem",
+      "key": "HSPDG"
+    }
+  }]

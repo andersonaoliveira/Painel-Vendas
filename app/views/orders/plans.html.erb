@@ -1,0 +1,29 @@
+<h1 class="ls-title-intro ls-ico-edit-admin">Cadastro de novo pedido</h1>
+<%= link_to 'Cadastrar novo cliente', new_client_path,  class: "ls-btn ls-btn-sm" %><br><br>
+
+<div class= "ls-box box">
+  <% if @plans.nil? %>
+    <h2 class="ls-alert-warning">Houve um erro de conexão com o servidor</h2>
+  <% elsif @plans.empty? %>
+    <h2 class="ls-alert-warning">Nenhum plano cadastrado</h2>
+  <% else %>
+    <%= form_with model: [@client, @order],
+                  url: values_path,
+                  html: { class: 'ls-form ls-form-horizontal' },
+                  method: :get do |form| %>
+      <%= form.hidden_field :client_id, value: @client_id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+
+      <fieldset>
+        <%= form.label :plan_id, 'Planos', class: 'ls-label' %>
+
+          <div class="dropdown">
+            <%= form.collection_select :plan_id, @plans, :id, :name %>
+          </div>
+
+        <%= form.submit 'Próximo',  class: "ls-btn ls-btn-sm" %>
+      </fieldset>
+    <% end %>
+  <% end %>
+</div>
+<%= link_to 'Voltar', :back, class: 'ls-btn ls-btn-sm', style: 'margin-top: -15px' %>

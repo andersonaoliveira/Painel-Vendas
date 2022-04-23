@@ -1,0 +1,53 @@
+<h1 class="ls-title-intro ls-ico-panel-pabx">Vendedores</h1>
+<%= link_to 'Cadastrar um vendedor', new_seller_path,  class: "ls-btn ls-btn-sm"  %>
+<% if @sellers.empty? && @inactive_sellers.empty? %>
+  <h2 class="ls-alert-warning">Nenhum vendedor cadastrado</h2>
+<% else %>
+
+  <% unless @sellers.empty? %>
+    <table class="ls-table ls-table-striped ls-bg-header" id="active-sellers">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sellers.each do |seller| %>
+          <tr id="seller-<%= seller.id %>">
+            <td scope="row"> <%= link_to seller.name, seller_path(seller.id) %> </td>
+            <td scope="row"> <%= seller.email %> </td>
+            <td scope="row"> <%= User.human_enum_name(:status, seller.status) %> </td>
+            <td scope="row"><%= link_to 'Ver detalhes', seller_path(seller.id), class: "ls-btn ls-btn-sm" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <% unless @inactive_sellers.empty? %>
+    <table class="ls-table ls-table-striped ls-bg-header" id="inactive-sellers">
+      <thead id="ls-bg-header-inactive">
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @inactive_sellers.each do |seller| %>
+          <tr id="seller-<%= seller.id %>">
+            <td scope="row"> <%= link_to seller.name, seller_path(seller.id) %> </td>
+            <td scope="row"> <%= seller.email %> </td>
+            <td scope="row"> <%= User.human_enum_name(:status, seller.status) %> </td>
+            <td scope="row"><%= link_to 'Ver detalhes', seller_path(seller.id), class: "ls-btn ls-btn-sm" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+<% end %>

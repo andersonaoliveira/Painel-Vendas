@@ -1,0 +1,5 @@
+<%= form_with url: clients_path, method: :get do %>
+    <%= label_tag :query, 'CPF do cliente' %>
+    <%= text_field_tag :query %>
+    <%= submit_tag 'Buscar', class: 'ls-btn' %>
+  <% end %>

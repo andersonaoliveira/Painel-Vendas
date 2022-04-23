@@ -1,0 +1,43 @@
+<h1 class="ls-title-intro ls-ico-user">Dados do cliente <%= @client.name %></h1>
+
+<div class="ls-box">
+  <h2 class="ls-title-name"><%= @client.name %></h2>
+  <div><br>
+    
+      <div class="ls-label col-md-6 col-lg-8">
+        <h4 class="ls-label-text">CPF:</h4><br>
+        <div class="ls-form-text"><%= @client.eni %></div>
+      </div><br>
+
+      <div class="ls-label col-md-6 col-lg-8">
+        <h4 class="ls-label-text">Status do CPF:</h4><br>
+      
+        <% if @client.active? %>
+          <div class="ls-form-text">CPF ativo</div><br>
+        <% else %>
+          <div class="ls-form-text">CPF inativo</div><br>
+        <% end %>
+      </div>
+
+      <div class="ls-label col-md-6 col-lg-8">
+        <h4 class="ls-label-text">Email</h4><br>
+        <div class="ls-form-text"><%= @client.email %></div><br>
+      </div>
+      <% unless current_user.salesperson? %>
+        <% if @client.active? %>
+          <%= button_to 'Inativar CPF', review_deactivation_client_path(@client.id), method: :get, class: "ls-btn ls-btn-sm" %>
+        <% else %>
+
+        <h3 class="ls-alert-warning">O cliente se encontra bloqueado. Entre em contato com o nosso atendimento</h3><br>
+          <div class="ls-label col-md-6 col-lg-8">
+            <div class="ls-label-text">Motivo:</div><br>
+            <div class="ls-form-text"><%= @client.cancellation_reason %></div><br><br>
+            <%= button_to 'Reativar CPF', activate_cpf_client_path(@client.id), {method: 'patch', class: "ls-btn ls-btn-sm"}%>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+<%= button_to 'Voltar', clients_path, method: :get, class: "ls-btn ls-btn-sm" %>
+
+
